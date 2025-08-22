@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CODNOX Futuristic Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Dark futuristic theme */
+    --background: 225 25% 8%;
+    --foreground: 210 100% 98%;
+
+    /* Glass morphism cards */
+    --card: 225 25% 12%;
+    --card-foreground: 210 100% 95%;
+
+    --popover: 225 25% 10%;
+    --popover-foreground: 210 100% 95%;
+
+    /* Neon blue primary */
+    --primary: 200 100% 60%;
+    --primary-foreground: 225 25% 8%;
+    --primary-glow: 200 100% 70%;
+
+    /* Purple secondary */
+    --secondary: 280 100% 65%;
+    --secondary-foreground: 210 100% 98%;
+    --secondary-glow: 280 100% 75%;
+
+    /* Muted glass tones */
+    --muted: 225 15% 20%;
+    --muted-foreground: 210 20% 70%;
+
+    /* Cyan accent */
+    --accent: 180 100% 65%;
+    --accent-foreground: 225 25% 8%;
+    --accent-glow: 180 100% 75%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Glass borders and inputs */
+    --border: 225 15% 25%;
+    --input: 225 15% 15%;
+    --ring: 200 100% 60%;
+
+    --radius: 0.75rem;
+
+    /* Futuristic gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 100% 65%));
+    --gradient-secondary: linear-gradient(135deg, hsl(280 100% 65%), hsl(180 100% 65%));
+    --gradient-bg: linear-gradient(135deg, hsl(225 25% 8%), hsl(225 25% 12%));
+    --gradient-glass: linear-gradient(135deg, hsl(225 25% 15% / 0.3), hsl(225 25% 20% / 0.1));
+
+    /* Glowing shadows */
+    --shadow-primary: 0 0 30px hsl(200 100% 60% / 0.3);
+    --shadow-secondary: 0 0 30px hsl(280 100% 65% / 0.3);
+    --shadow-accent: 0 0 30px hsl(180 100% 65% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(225 25% 5% / 0.4);
+
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode variant - still futuristic but brighter */
+  .light {
+    --background: 210 30% 95%;
+    --foreground: 225 25% 15%;
+    --card: 210 30% 98%;
+    --primary: 200 100% 45%;
+    --secondary: 280 80% 50%;
+    --accent: 180 90% 50%;
+    --border: 210 20% 85%;
+    --input: 210 20% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: linear-gradient(135deg, hsl(225 25% 8%), hsl(225 25% 12%));
+    min-height: 100vh;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(225 25% 12%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 100% 65%));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, hsl(200 100% 70%), hsl(280 100% 75%));
+  }
+}
+
+@layer components {
+  /* Glass morphism effect */
+  .glass {
+    background: linear-gradient(135deg, hsl(225 25% 15% / 0.3), hsl(225 25% 20% / 0.1));
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(225 15% 25% / 0.3);
+  }
+
+  .glass-strong {
+    background: linear-gradient(135deg, hsl(225 25% 15% / 0.7), hsl(225 25% 20% / 0.3));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(225 15% 30% / 0.5);
+  }
+
+  /* Neon glow effects */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(200 100% 60% / 0.3), 0 0 40px hsl(200 100% 60% / 0.1);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 20px hsl(280 100% 65% / 0.3), 0 0 40px hsl(280 100% 65% / 0.1);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(180 100% 65% / 0.3), 0 0 40px hsl(180 100% 65% / 0.1);
+  }
+
+  /* Text glow */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  /* Animated gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(200 100% 60%), hsl(280 100% 65%), hsl(180 100% 65%));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* Pulse glow animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    from { box-shadow: 0 0 20px hsl(200 100% 60% / 0.3); }
+    to { box-shadow: 0 0 30px hsl(200 100% 60% / 0.6), 0 0 60px hsl(200 100% 60% / 0.2); }
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(200 100% 60% / 0.2), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+}
