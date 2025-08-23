@@ -15,7 +15,11 @@ import AI_automation_webp from '@/assets/AI_automation.webp';
 import enterprise_mp4 from '@/assets/enterprise.mp4';
 import enterprise_webm from '@/assets/enterprise.webm';
 import enterprise_webp from '@/assets/enterprise.webp';
-import solutions_webp from '@/assets/solutions1.webm'; // Hero poster
+import solutions_webp from '@/assets/solutions1.webm';
+import tech_loop_webp from "@/assets/tech_loop_image.webp"
+import tech_loop_mp4 from "@/assets/tech_loop_mp.mp4"
+import tech_loop_webm from "@/assets/tech_loop_web.webm"
+ // Hero poster
 
 // Helper function to create URL-friendly slugs
 const toSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
@@ -123,9 +127,9 @@ const ServicesSection = () => {
         {/* Hero Section */}
         <section className="relative flex items-center justify-center p-8 md:p-16 bg-background rounded-3xl shadow-2xl mx-4 sm:mx-8 border border-white/10 min-h-[calc(100vh-10rem)] overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden rounded-3xl">
-            <video poster={solutions_webp} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline>
-              <source src={solutions_webp} type="video/webm" />
-              <source src={solutions_webp} type="video/mp4" />
+            <video poster={tech_loop_webp} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline>
+              <source src={tech_loop_webm} type="video/webm" />
+              <source src={tech_loop_mp4} type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-black/60"></div>
           </div>
