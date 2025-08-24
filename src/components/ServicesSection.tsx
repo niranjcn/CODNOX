@@ -1,3 +1,9 @@
+/*
+* components/ServicesSection.tsx
+* Key changes:
+* 1. Wrapped the entire component in a `<section>` tag with `id="services"`.
+* 2. This allows the navigation's scroll detection logic to correctly identify when the user is viewing any part of this component.
+*/
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Bot, Globe, Network, BarChart3, Smartphone, Shield, Cloud, Cpu, ArrowRight } from 'lucide-react';
@@ -122,10 +128,10 @@ const ServicesSection = () => {
   }));
 
   return (
-    <div className="bg-background text-foreground">
+    <section id="services" className="bg-background text-foreground">
       <main className="pt-40 pb-16 space-y-8">
         {/* Hero Section */}
-        <section className="relative flex items-center justify-center p-8 md:p-16 bg-background rounded-3xl shadow-2xl mx-4 sm:mx-8 border border-white/10 min-h-[calc(100vh-10rem)] overflow-hidden">
+        <div className="relative flex items-center justify-center p-8 md:p-16 bg-background rounded-3xl shadow-2xl mx-4 sm:mx-8 border border-white/10 min-h-[calc(100vh-10rem)] overflow-hidden">
           <div className="absolute inset-0 w-full h-full overflow-hidden rounded-3xl">
             <video poster={tech_loop_webp} className="absolute inset-0 w-full h-full object-cover" autoPlay loop muted playsInline>
               <source src={tech_loop_webm} type="video/webm" />
@@ -141,10 +147,10 @@ const ServicesSection = () => {
               Comprehensive solutions designed to accelerate your digital transformation and drive sustainable growth.
             </p>
           </div>
-        </section>
+        </div>
 
         {/* Sticky Stacked Cards Section */}
-        <section
+        <div
           className="relative isolate"
           style={{ height: `${servicesData.length * 100}vh` }}
         >
@@ -158,14 +164,11 @@ const ServicesSection = () => {
                   className="sticky top-40 h-[calc(100vh-10rem)] w-full px-4 sm:px-8 flex items-center justify-center isolate"
                   style={{ zIndex: index + 1 }}
                 >
-                  {/* UPDATE: Card container updated with glassmorphism, glow effects, and hover transitions from SolutionsPreview */}
                   <div className="group relative w-full h-full flex items-center justify-center p-4 md:p-12 bg-background/50 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/10 overflow-hidden isolate transition-all duration-500 hover:scale-[1.01]">
                     
-                    {/* Background Effects from SolutionsPreview */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500 -z-20`}></div>
                     <div className={`absolute inset-0 ${service.glowColor} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500 -z-20`}></div>
 
-                    {/* Original Background Effects (retained for added depth) */}
                     <AnimatedGrid />
                     <FloatingParticles count={25} color={service.color} />
                     <GlowingOrb color={service.color} size="w-40 h-40" position={{ top: '10%', right: '10%' }} />
@@ -222,9 +225,9 @@ const ServicesSection = () => {
               </React.Fragment>
             );
           })}
-        </section>
+        </div>
       </main>
-    </div>
+    </section>
   );
 };
 

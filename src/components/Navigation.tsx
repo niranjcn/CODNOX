@@ -1,74 +1,93 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Bot, Globe, Network, BarChart3, Smartphone, Shield, Cloud, Cpu } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isServicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
   const location = useLocation();
 
+  // Scroll and active section detection logic
   useEffect(() => {
+    // Select all section elements that have an 'id' attribute
+    const sections = document.querySelectorAll('section[id]');
+    
     const handleScroll = () => {
+      // Set scrolled state for navbar background effect
       setScrolled(window.scrollY > 50);
+      
+      let current = 'home'; // Default to 'home'
+      // Add an offset equal to the navbar height for accurate detection
+      const scrollY = window.scrollY + 80; 
+
+      // Iterate over sections to find the current one
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        // If the top of the section is above the scroll position, it's the current one
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      setActiveSection(current);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Run on initial load
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navItems = [
-    { name: 'Home', to: '/' },
-    { name: 'About', to: '/about' },
-    // Services is handled separately for the dropdown
-    { name: 'Portfolio', to: '/portfolio' },
-    { name: 'Tech Stack', to: '/tech' },
-    { name: 'Contact', to: '/contact' },
-  ];
-  
-  const services = [
-    { icon: Bot, title: 'AI & Machine Learning' },
-    { icon: Globe, title: 'Web Development' },
-    { icon: Network, title: 'Network Automation' },
-    { icon: BarChart3, title: 'Data Science' },
-    { icon: Smartphone, title: 'Mobile Development' },
-    { icon: Cloud, title: 'Cloud Solutions' },
-    { icon: Shield, title: 'Cybersecurity' },
-    { icon: Cpu, title: 'IoT Solutions' }
+    { name: 'About', to: '#about' },
+    { name: 'Services', to: '#services' },
+    { name: 'Portfolio', to: '#portfolio' },
+    { name: 'Tech Stack', to: '#tech' },
+    { name: 'Members', to: '#members' },
+    { name: 'Contact', to: '#contact' },
   ];
 
-  const toSlug = (title: string) => title.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-');
+  const handleScrollTo = (e, targetId) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 70, // Adjust offset for fixed navbar
+        behavior: 'smooth',
+      });
+    } else if (targetId === '#home') {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    }
+  };
 
-  // Close mobile menu on navigation
+  // Close mobile menu on location change
   useEffect(() => {
     setIsOpen(false);
-    setServicesDropdownOpen(false);
   }, [location]);
 
   const NavLinkItem = ({ to, children }) => {
-    // Custom NavLink to handle active state for the underline
+    const isActive = activeSection === to.substring(1);
     return (
-      <NavLink
-        to={to}
-        className={({ isActive }) =>
-          `px-3 py-2 transition-all duration-300 font-exo font-medium relative group ${
-            isActive ? 'text-primary' : 'text-foreground hover:text-primary'
-          }`
-        }
+      <a
+        href={to}
+        onClick={(e) => handleScrollTo(e, to)}
+        className={`px-3 py-2 transition-all duration-300 font-exo font-medium relative group ${
+          isActive ? 'text-primary' : 'text-foreground hover:text-primary'
+        }`}
       >
-        {({ isActive }) => (
-          <>
-            {children}
-            <span
-              className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
-                isActive ? 'w-full' : 'w-0 group-hover:w-full'
-              }`}
-            />
-          </>
-        )}
-      </NavLink>
+        {children}
+        <span
+          className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 ${
+            isActive ? 'w-full' : 'w-0 group-hover:w-full'
+          }`}
+        />
+      </a>
     );
   };
 
@@ -86,70 +105,23 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-2">
+          <a href="#home" onClick={(e) => handleScrollTo(e, '#home')} className="flex items-center space-x-2">
             <motion.div
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
                 <span className="text-white font-orbitron font-bold text-sm">C</span>
               </div>
-              <span className="text-2xl font-orbitron font-bold gradient-text">
+              <span className="text-2xl font-orbitron font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
                 CODNOX
               </span>
             </motion.div>
-          </NavLink>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
-            {navItems.slice(0, 2).map((item) => ( // Home, About
-              <NavLinkItem key={item.name} to={item.to}>{item.name}</NavLinkItem>
-            ))}
-
-            {/* Services Dropdown */}
-            <div className="relative" onMouseEnter={() => setServicesDropdownOpen(true)} onMouseLeave={() => setServicesDropdownOpen(false)}>
-               <NavLink
-                 to="/services"
-                 className={({ isActive }) =>
-                    `px-3 py-2 flex items-center gap-1 transition-all duration-300 font-exo font-medium relative group ${
-                      isActive ? 'text-primary' : 'text-foreground hover:text-primary'
-                    }`
-                 }
-               >
-                 {({ isActive }) => (
-                   <>
-                     Services
-                     <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
-                     <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-primary transition-all duration-300 ${
-                         isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                       }`}
-                     />
-                   </>
-                 )}
-               </NavLink>
-              <AnimatePresence>
-                {isServicesDropdownOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 glass-strong rounded-xl shadow-glass p-4"
-                  >
-                    <div className="space-y-2">
-                      {services.map(service => (
-                        <NavLink key={service.title} to={`/services#${toSlug(service.title)}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-primary/10 transition-colors text-sm font-exo text-foreground">
-                          <service.icon className="w-4 h-4 text-primary" />
-                          {service.title}
-                        </NavLink>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-             
-            {navItems.slice(2).map((item) => ( // Portfolio, Tech Stack, Contact
+            {navItems.map((item) => (
               <NavLinkItem key={item.name} to={item.to}>{item.name}</NavLinkItem>
             ))}
           </div>
@@ -180,27 +152,10 @@ const Navigation = () => {
           >
             <div className="px-4 py-4 space-y-2">
               {navItems.map((item) => (
-                <NavLink key={item.name} to={item.to} className="block text-foreground hover:text-primary transition-colors font-exo py-2" onClick={() => setIsOpen(false)}>
+                <a key={item.name} href={item.to} className="block text-foreground hover:text-primary transition-colors font-exo py-2" onClick={(e) => handleScrollTo(e, item.to)}>
                   {item.name}
-                </NavLink>
+                </a>
               ))}
-               {/* Mobile Services Dropdown */}
-              <div>
-                <button onClick={() => setServicesDropdownOpen(!isServicesDropdownOpen)} className="w-full flex justify-between items-center text-foreground hover:text-primary transition-colors font-exo py-2">
-                    Services
-                    <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {isServicesDropdownOpen && (
-                    <div className="pl-4 pt-2 space-y-2">
-                         {services.map(service => (
-                        <NavLink key={service.title} to={`/services#${toSlug(service.title)}`} className="flex items-center gap-3 p-2 rounded-lg hover:bg-primary/10 transition-colors text-sm font-exo text-foreground" onClick={() => setIsOpen(false)}>
-                          <service.icon className="w-4 h-4 text-primary" />
-                          {service.title}
-                        </NavLink>
-                      ))}
-                    </div>
-                )}
-              </div>
             </div>
           </motion.div>
         )}
