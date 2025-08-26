@@ -1,5 +1,18 @@
 import { motion } from 'framer-motion';
 import { Linkedin, Twitter, Github } from 'lucide-react';
+import Niranj from '@/assets/team/Niranj.jpg';
+import Nevin from '@/assets/team/Nevin.jpg';
+import Diya from '@/assets/team/Diya.jpg';
+import Mohaammed from '@/assets/team/Mohaamed.jpg';
+import Sneethi from '@/assets/team/Sneethi.jpg';
+import Nandana from '@/assets/team/Nandana.jpg';
+import Keerthana from '@/assets/team/Keerthana.jpg';
+import Ashika from '@/assets/team/Ashika Raveendran.jpg';
+import Akshaj from '@/assets/team/Akshaj.jpg';
+import Poornendh from '@/assets/team/Poornendh.jpg';
+import Riza from '@/assets/team/Riza.jpg';
+import Sabha from '@/assets/team/Sabha.jpg';
+import Sruthi from '@/assets/team/Sruthi.jpg';
 
 const TeamSection = () => {
   const officials = [
