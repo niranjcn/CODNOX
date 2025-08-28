@@ -3,24 +3,26 @@ import { Linkedin, Twitter, Github } from 'lucide-react';
 import Niranj from '@/assets/team/Niranj.jpg';
 import Nevin from '@/assets/team/Nevin.jpg';
 import Diya from '@/assets/team/Diya.jpg';
-import Mohaammed from '@/assets/team/Mohaamed.jpg';
+import Mohaammed from '@/assets/team/Mohammed.jpg';
 import Sneethi from '@/assets/team/Sneethi.jpg';
 import Nandana from '@/assets/team/Nandana.jpg';
 import Keerthana from '@/assets/team/Keerthana.jpg';
 import Ashika from '@/assets/team/Ashika Raveendran.jpg';
-import Akshaj from '@/assets/team/Akshaj.jpg';
-import Poornendh from '@/assets/team/Poornendh.jpg';
+import Akshaj from '@/assets/team/Akshajj.jpg';
+import Poornendh from '@/assets/team/Poornendh.pdf';
 import Riza from '@/assets/team/Riza.jpg';
-import Sabha from '@/assets/team/Sabha.jpg';
+import Sabha from '@/assets/team/Sabah.jpg';
 import Sruthi from '@/assets/team/Sruthi.jpg';
+import Jithin from '@/assets/team/Jithin.jpeg';
+import Souhrudh from '@/assets/team/Souhrudh.jpg';
 
 const TeamSection = () => {
   const officials = [
     {
       id: 1,
-      name: "Alex Chen",
-      role: "Chief Executive Officer",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+      name: "Jithin S",
+      role: "Advisor",
+      image: Jithin,
       social: {
         linkedin: "#",
         twitter: "#",
@@ -29,20 +31,20 @@ const TeamSection = () => {
     },
     {
       id: 2,
-      name: "Sarah Mitchell",
-      role: "Chief Technology Officer",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b332c851?w=300&h=300&fit=crop&crop=face",
+      name: "Niranj C N",
+      role: "Chief Executive Officer",
+      image: Niranj,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/niranjcn/",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/niranjcn"
       }
     },
     {
       id: 3,
-      name: "Marcus Rodriguez",
-      role: "Chief Operating Officer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      name: "Nevin R Pradeep",
+      role: "Chief Design Officer",
+      image: Nevin,
       social: {
         linkedin: "#",
         twitter: "#",
@@ -56,7 +58,7 @@ const TeamSection = () => {
       id: 4,
       name: "Emily Watson",
       role: "Lead Frontend Developer",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+      image: Diya,
       social: {
         linkedin: "#",
         twitter: "#",
@@ -67,7 +69,7 @@ const TeamSection = () => {
       id: 5,
       name: "David Kim",
       role: "AI Research Scientist",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+      image: Mohaammed,
       social: {
         linkedin: "#",
         twitter: "#",
@@ -78,7 +80,7 @@ const TeamSection = () => {
       id: 6,
       name: "Lisa Zhang",
       role: "Data Science Lead",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=face",
+      image: Ashika,
       social: {
         linkedin: "#",
         twitter: "#",
@@ -89,7 +91,7 @@ const TeamSection = () => {
       id: 7,
       name: "James Wilson",
       role: "DevOps Engineer",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
+      image: Keerthana,
       social: {
         linkedin: "#",
         twitter: "#",
@@ -100,7 +102,84 @@ const TeamSection = () => {
       id: 8,
       name: "Sofia Andersson",
       role: "UX/UI Designer",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=face",
+      image: Sruthi,
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      id: 9,
+      name: "Sofia Andersson",
+      role: "UX/UI Designer",
+      image: Souhrudh,
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      id: 8,
+      name: "Sofia Andersson",
+      role: "UX/UI Designer",
+      image: Sneethi,
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      id: 8,
+      name: "Sofia Andersson",
+      role: "UX/UI Designer",
+      image: Nandana,
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      id: 8,
+      name: "Sofia Andersson",
+      role: "UX/UI Designer",
+      image: Riza,
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      id: 8,
+      name: "Sofia Andersson",
+      role: "UX/UI Designer",
+      image: Sabha,
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      id: 8,
+      name: "Sofia Andersson",
+      role: "UX/UI Designer",
+      image: Akshaj,
+      social: {
+        linkedin: "#",
+        twitter: "#",
+        github: "#"
+      }
+    },
+    {
+      id: 8,
+      name: "Sofia Andersson",
+      role: "UX/UI Designer",
+      image: Poornendh,
       social: {
         linkedin: "#",
         twitter: "#",
