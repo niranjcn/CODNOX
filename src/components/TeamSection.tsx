@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Linkedin, Twitter, Github } from 'lucide-react';
 import Niranj from '@/assets/team/Niranj.jpg';
-import Nevin from '@/assets/team/Nevin.jpg';
+import Nevin from '@/assets/team/nevin.jpg';
 import Diya from '@/assets/team/Diya.jpg';
 import Mohaammed from '@/assets/team/Mohammed.jpg';
 import Sneethi from '@/assets/team/Sneethi.jpg';
