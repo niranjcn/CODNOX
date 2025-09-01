@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Linkedin, Twitter, Github } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Niranj from '@/assets/team/Niranj.jpg';
 import Nevin from '@/assets/team/nevin.jpg';
 import Diya from '@/assets/team/Diya.jpg';
@@ -16,7 +17,7 @@ import Sruthi from '@/assets/team/Sruthi.jpg';
 import Jithin from '@/assets/team/Jithin.jpeg';
 import Souhrudh from '@/assets/team/Souhrudh.jpg';
 
-const TeamSection = () => {
+const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
   const officials = [
     {
       id: 1,
@@ -121,7 +122,7 @@ const TeamSection = () => {
       }
     },
     {
-      id: 8,
+      id: 10,
       name: "Sofia Andersson",
       role: "UX/UI Designer",
       image: Sneethi,
@@ -132,7 +133,7 @@ const TeamSection = () => {
       }
     },
     {
-      id: 8,
+      id: 11,
       name: "Sofia Andersson",
       role: "UX/UI Designer",
       image: Nandana,
@@ -143,7 +144,7 @@ const TeamSection = () => {
       }
     },
     {
-      id: 8,
+      id: 12,
       name: "Sofia Andersson",
       role: "UX/UI Designer",
       image: Riza,
@@ -154,7 +155,7 @@ const TeamSection = () => {
       }
     },
     {
-      id: 8,
+      id: 13,
       name: "Sofia Andersson",
       role: "UX/UI Designer",
       image: Sabha,
@@ -165,7 +166,7 @@ const TeamSection = () => {
       }
     },
     {
-      id: 8,
+      id: 14,
       name: "Sofia Andersson",
       role: "UX/UI Designer",
       image: Akshaj,
@@ -176,7 +177,7 @@ const TeamSection = () => {
       }
     },
     {
-      id: 8,
+      id: 15,
       name: "Sofia Andersson",
       role: "UX/UI Designer",
       image: Poornendh,
@@ -187,6 +188,8 @@ const TeamSection = () => {
       }
     }
   ];
+
+  const displayedMembers = showAll ? members : members.slice(0, 8);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -217,14 +220,12 @@ const TeamSection = () => {
           : 'glass border border-border/20 hover:border-primary/40 p-6'
       }`}
     >
-      {/* Animated background gradient */}
       <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
         isOfficial 
           ? 'bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10'
           : 'bg-gradient-to-br from-primary/5 via-transparent to-secondary/5'
       }`} />
       
-      {/* Glowing border effect */}
       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-primary/20 via-accent/20 to-secondary/20 blur-sm -z-10" />
       
       <div className="flex flex-col items-center text-center relative z-10">
@@ -239,11 +240,9 @@ const TeamSection = () => {
               alt={member.name}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
-            {/* Overlay glow effect */}
             <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
           </div>
           
-          {/* Floating particles effect */}
           <div className="absolute -inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div className="absolute top-0 left-1/2 w-1 h-1 bg-primary rounded-full animate-pulse" />
             <div className="absolute top-1/4 right-0 w-1 h-1 bg-accent rounded-full animate-pulse delay-150" />
@@ -311,7 +310,6 @@ const TeamSection = () => {
 
   return (
     <section id="members" className="py-24 relative overflow-hidden bg-gradient-to-b from-background to-muted/10">
-      {/* Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-secondary/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -319,38 +317,39 @@ const TeamSection = () => {
       </div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20"
-        >
+        {!showAll && (
           <motion.div
-            initial={{ scale: 0.9 }}
-            whileInView={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="inline-block mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-20"
           >
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-4"></div>
-            <h2 className="text-5xl md:text-6xl font-orbitron font-bold mb-6">
-              Meet the <span className="gradient-text bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Innovators</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-4"></div>
+            <motion.div
+              initial={{ scale: 0.9 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="inline-block mb-6"
+            >
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-4"></div>
+              <h2 className="text-5xl md:text-6xl font-orbitron font-bold mb-6">
+                Meet the <span className="gradient-text bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Innovators</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-4"></div>
+            </motion.div>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-xl text-muted-foreground max-w-3xl mx-auto font-exo leading-relaxed"
+            >
+              The brilliant minds behind CODNOX's cutting-edge solutions and technological breakthroughs
+            </motion.p>
           </motion.div>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-xl text-muted-foreground max-w-3xl mx-auto font-exo leading-relaxed"
-          >
-            The brilliant minds behind CODNOX's cutting-edge solutions and technological breakthroughs
-          </motion.p>
-        </motion.div>
+        )}
 
-        {/* Officials Section */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -379,7 +378,7 @@ const TeamSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {officials.map((official, index) => (
               <motion.div
-                key={official.id}
+                key={`${official.id}-${index}`}
                 initial={{ opacity: 0, y: 50, rotateY: -15 }}
                 whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
                 transition={{ 
@@ -396,7 +395,6 @@ const TeamSection = () => {
           </div>
         </motion.div>
 
-        {/* Members Section */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -422,9 +420,9 @@ const TeamSection = () => {
             />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {members.map((member, index) => (
+            {displayedMembers.map((member, index) => (
               <motion.div
-                key={member.id}
+                key={`${member.id}-${index}`}
                 initial={{ opacity: 0, y: 30, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ 
@@ -440,9 +438,27 @@ const TeamSection = () => {
             ))}
           </div>
         </motion.div>
+
+        {!showAll && (
+          <motion.div
+            className="text-center mt-20"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              to="/team"
+              className="inline-block px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full shadow-lg font-orbitron bg-gradient-to-r from-primary to-secondary hover:scale-105 hover:shadow-primary/40 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+            >
+              Show All Teammates
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   );
 };
 
 export default TeamSection;
+
