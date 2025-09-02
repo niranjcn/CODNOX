@@ -47,7 +47,7 @@ const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
       role: "Chief Design Officer",
       image: Nevin,
       social: {
-        linkedin: "#",
+        linkedin: "",
         twitter: "#",
         github: "#"
       }
@@ -57,51 +57,51 @@ const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
   const members = [
     {
       id: 4,
-      name: "Emily Watson",
-      role: "Lead Frontend Developer",
+      name: "Fathima Diya Muhammed C M ",
+      role: "Frontend Developer",
       image: Diya,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/fathima-diya-muhammed-c-m-2330b7254/",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/FathimaDiyaMuhammedCM"
       }
     },
     {
       id: 5,
-      name: "David Kim",
-      role: "AI Research Scientist",
+      name: "Mohammed Riyad",
+      role: "Frontend Developer",
       image: Mohaammed,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/mohd-riyad?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/Mohammed8281"
       }
     },
     {
       id: 6,
-      name: "Lisa Zhang",
-      role: "Data Science Lead",
+      name: "Ashika Raveendran",
+      role: "Frontend Developer",
       image: Ashika,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/ashika-raveendran-aa03a2254",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/ASHIKARAVEENDRAN"
       }
     },
     {
       id: 7,
-      name: "James Wilson",
-      role: "DevOps Engineer",
+      name: "Kerthana K",
+      role: "Frontend Developer",
       image: Keerthana,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/keerthana-k-791339254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/keerthana822"
       }
     },
     {
       id: 8,
-      name: "Sofia Andersson",
+      name: "Sruthi S",
       role: "UX/UI Designer",
       image: Sruthi,
       social: {
@@ -112,19 +112,19 @@ const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
     },
     {
       id: 9,
-      name: "Sofia Andersson",
-      role: "UX/UI Designer",
+      name: "Souhrudh Jeevan",
+      role: "Frontend Developer",
       image: Souhrudh,
       social: {
-        linkedin: "#",
+        linkedin: "http://www.linkedin.com/in/souhrudh-jeevan-18aa94290",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/souhrudhJ"
       }
     },
     {
       id: 10,
-      name: "Sofia Andersson",
-      role: "UX/UI Designer",
+      name: "Sneethi S",
+      role: "Frontend Developer",
       image: Sneethi,
       social: {
         linkedin: "#",
@@ -134,19 +134,19 @@ const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
     },
     {
       id: 11,
-      name: "Sofia Andersson",
-      role: "UX/UI Designer",
+      name: "Nandana T",
+      role: "Frontend Developer",
       image: Nandana,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/nandana-t-05a609290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/nandanat1804"
       }
     },
     {
       id: 12,
-      name: "Sofia Andersson",
-      role: "UX/UI Designer",
+      name: "Riza Mehak",
+      role: "Frontend Developer",
       image: Riza,
       social: {
         linkedin: "#",
@@ -156,18 +156,18 @@ const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
     },
     {
       id: 13,
-      name: "Sofia Andersson",
-      role: "UX/UI Designer",
+      name: "Sabah Shameer",
+      role: "Frontend Developer",
       image: Sabha,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/sabah-shameer-876b01290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/sabahshameer123"
       }
     },
     {
       id: 14,
-      name: "Sofia Andersson",
+      name: "Akshaj",
       role: "UX/UI Designer",
       image: Akshaj,
       social: {
@@ -178,7 +178,7 @@ const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
     },
     {
       id: 15,
-      name: "Sofia Andersson",
+      name: "Poornendh",
       role: "UX/UI Designer",
       image: Poornendh,
       social: {
