@@ -127,9 +127,9 @@ const TeamSection = ({ showAll = false }: { showAll?: boolean }) => {
       role: "Frontend Developer",
       image: Sneethi,
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/sneethi-sudheendran-7a9a94290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         twitter: "#",
-        github: "#"
+        github: "https://github.com/sneethisdhrn851"
       }
     },
     {
